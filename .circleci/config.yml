@@ -25,9 +25,9 @@ jobs:
                   name: Docker Login
                   command: |
                       echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-            # - run:
-            #       name: Tag Docker image
-            #       command: docker tag express-circleci:latest $DOCKERHUB_USERNAME/express-circleci:latest
+            - run:
+                  name: Tag Docker image
+                  command: docker tag express-circleci:latest $DOCKERHUB_USERNAME/express-circleci:latest
             - run:
                   name: Push Docker image
                   command: docker push $DOCKERHUB_USERNAME/express-circleci:latest
