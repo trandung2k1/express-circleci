@@ -1,9 +1,25 @@
 version: 2.1
+
 orbs:
-    node: circleci/node@3.0.0
-    docker: circleci/docker@1.4.0
+    node: circleci/node@1.1.6
+
+jobs:
+    test:
+        docker:
+            - image: circleci/node:14
+        steps:
+            - checkout
+            - run: npm install
+            - run: npm test
 
 workflows:
     my-pipeline:
         jobs:
-            - node/test
+            - test
+# workflows:
+#     build_and_test_deploy:
+#         jobs:
+#             - build
+#             - test:
+#                   requires:
+#                       - build
